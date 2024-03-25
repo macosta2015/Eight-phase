@@ -14,20 +14,28 @@ const { performTest } = require('./components/newSketch.js');
         const newPage = await launchBrowserAndNavigateToDocument(); // This line should return a newPage object
 
         //NEW SKETCH
-        await performTest(newPage);
+        // await performTest(newPage);
+
+        //Select Element. Either sketch or phase
 
         await new Promise(resolve => setTimeout(resolve, 10000));
         console.log('Waited for 10 seconds.');
-        console.log('After First')
+        console.log('Chosing Index')
 
         await newPage.evaluate(() => {
-            const fifthButton = document.querySelectorAll('.os-list-item-name')[5]; //Index of the line
+            const fifthButton = document.querySelectorAll('.os-list-item-name')[6]; //Index of the line
             if (fifthButton) {
                 fifthButton.click();
             } else {
                 console.error('Fifth button not found.');
             }
         });
+
+
+        await new Promise(resolve => setTimeout(resolve, 10000));
+        console.log('Waited for 10 seconds.');
+        console.log('Chosing Index')
+
 
 
 
