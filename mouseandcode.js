@@ -16,23 +16,12 @@ const { performTest } = require('./components/newSketch.js');
         //NEW SKETCH
         await performTest(newPage);
 
-        // COPY SKETCH AND PASTING IT INTO ANOTHER SKETCH
-        //SELECT SKETCH RIGHT CLICK OPTIONS  
-        console.log('RIGHT CLICK OPTIONS:');
-        await newPage.evaluate(() => {
-            const thirdButton = document.querySelectorAll('.os-list-item-name')[3]; //What is the 2?
-            if (thirdButton) {
-                thirdButton.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'center' });
-            } else {
-                console.error('Third button not found.');
-            }
-        });
-
-        await new Promise(resolve => setTimeout(resolve, 2000));
-        console.log('Waited for 2 seconds.');
+        await new Promise(resolve => setTimeout(resolve, 10000));
+        console.log('Waited for 10 seconds.');
+        console.log('After First')
 
         await newPage.evaluate(() => {
-            const fifthButton = document.querySelectorAll('.os-list-item-name')[5]; //What happens if I chose 5
+            const fifthButton = document.querySelectorAll('.os-list-item-name')[5]; //Index of the line
             if (fifthButton) {
                 fifthButton.click();
             } else {
