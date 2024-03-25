@@ -2,26 +2,19 @@ const puppeteer = require('puppeteer');
 require('dotenv').config();
 
 const { launchBrowserAndNavigateToDocument } = require('./components/launchBrowserAndNavigate.js');
+const { performTest } = require('./components/newSketch.js');
+
 
 
 
 (async () => {
     try {
+
+        //LAUNCH BROWSER AND LOGIN
         const newPage = await launchBrowserAndNavigateToDocument(); // This line should return a newPage object
 
-
-        console.log('Waiting for the Sketch button to appear...');
-        await newPage.waitForSelector('div.toolset [command-id="newSketch"]', { visible: true });
-        console.log('Sketch button found. Clicking on it...');
-        await newPage.click('div.toolset [command-id="newSketch"]');
-        console.log('Clicked on the Sketch button.');
-        console.log('Waiting 10 seconds. TESTING TOP CLICK');
-        await new Promise(resolve => setTimeout(resolve, 10000)); // Wait for 10 seconds
-        await newPage.click('div[data-id="M9bsVubdGCsYO08ys"][data-bs-original-title="Top"]');
-        console.log('Waiting 10 seconds.');
-        await new Promise(resolve => setTimeout(resolve, 10000)); // Wait for 10 seconds
-        await newPage.click('div.ns-dialog-button-ok.button-ok');
-
+        //NEW SKETCH
+        await performTest(newPage);
 
         // COPY SKETCH AND PASTING IT INTO ANOTHER SKETCH
         //SELECT SKETCH RIGHT CLICK OPTIONS  
