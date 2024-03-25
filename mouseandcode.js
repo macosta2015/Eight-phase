@@ -14,7 +14,7 @@ const { performTest } = require('./components/newSketch.js');
         const newPage = await launchBrowserAndNavigateToDocument(); // This line should return a newPage object
 
         //NEW SKETCH
-        // await performTest(newPage);
+        await performTest(newPage);
 
         //Select Element. Either sketch or phase
 
@@ -23,7 +23,7 @@ const { performTest } = require('./components/newSketch.js');
         console.log('Chosing Index')
 
         await newPage.evaluate(() => {
-            const fifthButton = document.querySelectorAll('.os-list-item-name')[6]; //Index of the line
+            const fifthButton = document.querySelectorAll('.os-list-item-name')[5]; //Index of the line
             if (fifthButton) {
                 fifthButton.click();
             } else {
@@ -35,7 +35,6 @@ const { performTest } = require('./components/newSketch.js');
         await new Promise(resolve => setTimeout(resolve, 10000));
         console.log('Waited for 10 seconds.');
         console.log('Chosing Index')
-
 
 
 
@@ -82,6 +81,13 @@ const { performTest } = require('./components/newSketch.js');
 
 
 
+
+        // // Example usage:
+        // const selector = 'div[data-id="Dg4JdGx6jlZTm4XD"]'; // Replace with the appropriate selector
+        // const title = 'First Sketch'; // Replace with the desired title
+        // // const title = 'First Sketch'; // Replace with the desired title
+        // const editOptions3 = await performRightClickOptionByTitle(newPage, selector, title);
+        // console.log(editOptions3);
 
         // Example usage:
         const selector = 'div[data-id="Dg4JdGx6jlZTm4XD"]'; // Replace with the appropriate selector
