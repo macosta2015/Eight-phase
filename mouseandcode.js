@@ -5,8 +5,7 @@ const { launchBrowserAndNavigateToDocument } = require('./components/launchBrows
 const { performTest } = require('./components/newSketch.js');
 const { clickButtonByIndex } = require('./components/clickButtonByIndex.js');
 const copySketchFunction = require('./components/copySketchFunction.js');
-
-
+const { performRightClickOptionByTitle } = require('./components/performRightClickOptionByTitle.js');
 
 
 
@@ -26,53 +25,10 @@ const copySketchFunction = require('./components/copySketchFunction.js');
         const desiredIndex = 5; // Or any other desired index
         await clickButtonByIndex(newPage, desiredIndex);
         //Right click option
-
-
-        async function performRightClickOptionByTitle(newPage, selector, title) {
-            console.log('Right-clicked started.');
-            await new Promise(resolve => setTimeout(resolve, 5000));
-            console.log('Waited for 5 seconds.');
-
-            // Click on the element with the specified title
-            const elements = await newPage.$$(`${selector}[data-bs-original-title="${title}"]`);
-            if (elements.length > 0) {
-                await elements[0].click({ button: 'right' });
-                console.log(`Clicked on element with title "${title}".`);
-            } else {
-                throw new Error(`No element found with title "${title}" using selector "${selector}".`);
-            }
-
-            console.log('Right-clicked successfully.');
-
-            // Here you can wait for a specific context-menu-item-span element
-            const menuItemSelector = '.context-menu-item-span';
-            await newPage.waitForSelector(menuItemSelector, { visible: true });
-            console.log('Waited for context menu item to appear.');
-
-            await new Promise(resolve => setTimeout(resolve, 5000));
-            console.log('Waited for 5 seconds.');
-
-            const editOptions3 = await newPage.evaluate(() => {
-                const menuItems = document.querySelectorAll('.context-menu-item-span');
-                return Array.from(menuItems).map(item => item.textContent.trim());
-            });
-            await new Promise(resolve => setTimeout(resolve, 5000));
-            console.log('Retrieved edit options.');
-
-            console.log('Right-clicked ended.');
-            await new Promise(resolve => setTimeout(resolve, 5000));
-            console.log('Waited for 5 seconds.');
-
-            return editOptions3;
-        }
-
-
-        // Example usage:
         const selector = 'div[data-id="Dg4JdGx6jlZTm4XD"]'; // Replace with the appropriate selector
         const title = 'First Sketch'; // Replace with the desired title
         const editOptions3 = await performRightClickOptionByTitle(newPage, selector, title);
         console.log(editOptions3);
-
 
 
         // const desiredOption = 'Copy sketch'; //TYPE WHICH EDIT OPTION YOU WANT TO CHOSE
@@ -145,17 +101,15 @@ const copySketchFunction = require('./components/copySketchFunction.js');
         console.log('Waiting 10 seconds. AFTER ALL THE MESS');
         await new Promise(resolve => setTimeout(resolve, 10000)); // Wait for 10 seconds
 
-        // Assuming `newPage` is defined elsewhere
         const desiredIndex1 = 6; // Or any other desired index
         await clickButtonByIndex(newPage, desiredIndex1);
-        console.log('Waiting 10 seconds. AFTER ALL THE MESS 2');
-        await new Promise(resolve => setTimeout(resolve, 10000)); // Wait for 10 seconds
-        // Example usage:
-        const selector1 = 'div[data-id="AJC+8X/uU1MWWXEK"]'; //Changed the selector1 
-        // const selector = 'div[data-id="Dg4JdGx6jlZTm4XD"]'; // Replace with the appropriate selector
-        const title1 = 'Second Sketch'; // Title of the element to click
+        //Right click option
+        const selector1 = 'div[data-id="AJC+8X/uU1MWWXEK"]'; // Replace with the appropriate selector
+        const title1 = 'Second Sketch'; // Replace with the desired title
         const editOptions1 = await performRightClickOptionByTitle(newPage, selector1, title1);
         console.log(editOptions1);
+
+
 
 
 
