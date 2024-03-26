@@ -3,6 +3,8 @@ require('dotenv').config();
 
 const { launchBrowserAndNavigateToDocument } = require('./components/launchBrowserAndNavigate.js');
 const { performTest } = require('./components/newSketch.js');
+const { clickButtonByIndex } = require('./components/clickButtonByIndex.js');
+
 
 
 
@@ -16,31 +18,13 @@ const { performTest } = require('./components/newSketch.js');
         //NEW SKETCH
         await performTest(newPage);
 
-        //Select Element. Either sketch or phase
-
-        await new Promise(resolve => setTimeout(resolve, 10000));
-        console.log('Waited for 10 seconds.');
-        console.log('Chosing Index')
-
-        await newPage.evaluate(() => {
-            const fifthButton = document.querySelectorAll('.os-list-item-name')[5]; //Index of the line
-            if (fifthButton) {
-                fifthButton.click();
-            } else {
-                console.error('Fifth button not found.');
-            }
-        });
-
-
-        await new Promise(resolve => setTimeout(resolve, 10000));
-        console.log('Waited for 10 seconds.');
-        console.log('Chosing Index')
+        // Assuming `newPage` is defined elsewhere
+        const desiredIndex = 5; // Or any other desired index
+        await clickButtonByIndex(newPage, desiredIndex);
 
 
 
-
-
-
+        //Right click option
         async function performRightClickOptionByTitle(newPage, selector, title) {
             console.log('Right-clicked started.');
             await new Promise(resolve => setTimeout(resolve, 5000));
@@ -79,15 +63,6 @@ const { performTest } = require('./components/newSketch.js');
             return editOptions3;
         }
 
-
-
-
-        // // Example usage:
-        // const selector = 'div[data-id="Dg4JdGx6jlZTm4XD"]'; // Replace with the appropriate selector
-        // const title = 'First Sketch'; // Replace with the desired title
-        // // const title = 'First Sketch'; // Replace with the desired title
-        // const editOptions3 = await performRightClickOptionByTitle(newPage, selector, title);
-        // console.log(editOptions3);
 
         // Example usage:
         const selector = 'div[data-id="Dg4JdGx6jlZTm4XD"]'; // Replace with the appropriate selector
@@ -145,7 +120,13 @@ const { performTest } = require('./components/newSketch.js');
 
 
         //SELECT SKETCH RIGHT CLICK OPTIONS TO UNCLICK
-        console.log('RIGHT CLICK OPTIONS:');
+        // console.log('RIGHT CLICK OPTIONS:');
+
+
+        console.log('Waiting 10 seconds.');
+        await new Promise(resolve => setTimeout(resolve, 10000)); // Wait for 10 seconds
+
+
         await newPage.evaluate(() => {
             const thirdButton = document.querySelectorAll('.os-list-item-name')[5];
             thirdButton.click();
@@ -156,26 +137,41 @@ const { performTest } = require('./components/newSketch.js');
             }
         });
 
+        console.log('Waiting 10 seconds.');
+        await new Promise(resolve => setTimeout(resolve, 10000)); // Wait for 10 seconds
+
         //SELECT SKETCH RIGHT CLICK OPTIONS TO PASTE
-        console.log('RIGHT CLICK OPTIONS:');
-        await newPage.evaluate(() => {
-            const thirdButton = document.querySelectorAll('.os-list-item-name')[6];
-            thirdButton.click();
-            if (thirdButton) {
-                thirdButton.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'center' });
-            } else {
-                console.error('Third button not found.');
-            }
-        });
+        // console.log('RIGHT CLICK OPTIONS:');
+        // await newPage.evaluate(() => {
+        //     const thirdButton = document.querySelectorAll('.os-list-item-name')[8];
+        //     thirdButton.click();
+        //     if (thirdButton) {
+        //         thirdButton.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'center' });
+        //     } else {
+        //         console.error('Third button not found.');
+        //     }
+        // });
 
 
+        console.log('Waiting 10 seconds.');
+        console.log('clickButtonByIndex');
+
+        await new Promise(resolve => setTimeout(resolve, 10000)); // Wait for 10 seconds
 
 
+        // Assuming `newPage` is defined elsewhere
+        const desiredIndex1 = 6; // Or any other desired index
+        await clickButtonByIndex(newPage, desiredIndex1);
         // Example usage:
         const selector1 = 'div[data-id="XgFZbXC58Zl90SMu"]'; // Selector targeting the element with data-id="XgFZbXC58Zl90SMu"
-        const title1 = 'Sketch 2'; // Title of the element to click
+        const title1 = 'Sketch 1'; // Title of the element to click
         const editOptions1 = await performRightClickOptionByTitle(newPage, selector1, title1);
         console.log(editOptions1);
+
+
+
+
+
 
 
 
