@@ -23,10 +23,11 @@ const copySketchFunction = require('./components/copySketchFunction.js');
 
 
         //ALL THE CODE TOGETHER
-        // Assuming `newPage` is defined elsewhere
         const desiredIndex = 5; // Or any other desired index
         await clickButtonByIndex(newPage, desiredIndex);
         //Right click option
+
+
         async function performRightClickOptionByTitle(newPage, selector, title) {
             console.log('Right-clicked started.');
             await new Promise(resolve => setTimeout(resolve, 5000));
@@ -64,6 +65,8 @@ const copySketchFunction = require('./components/copySketchFunction.js');
 
             return editOptions3;
         }
+
+
         // Example usage:
         const selector = 'div[data-id="Dg4JdGx6jlZTm4XD"]'; // Replace with the appropriate selector
         const title = 'First Sketch'; // Replace with the desired title
