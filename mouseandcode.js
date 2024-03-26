@@ -140,21 +140,6 @@ const { clickButtonByIndex } = require('./components/clickButtonByIndex.js');
         console.log('Waiting 10 seconds.');
         await new Promise(resolve => setTimeout(resolve, 10000)); // Wait for 10 seconds
 
-        //SELECT SKETCH RIGHT CLICK OPTIONS TO PASTE
-        // console.log('RIGHT CLICK OPTIONS:');
-        // await newPage.evaluate(() => {
-        //     const thirdButton = document.querySelectorAll('.os-list-item-name')[8];
-        //     thirdButton.click();
-        //     if (thirdButton) {
-        //         thirdButton.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'center' });
-        //     } else {
-        //         console.error('Third button not found.');
-        //     }
-        // });
-
-
-        console.log('Waiting 10 seconds.');
-        console.log('clickButtonByIndex');
 
         await new Promise(resolve => setTimeout(resolve, 10000)); // Wait for 10 seconds
 
